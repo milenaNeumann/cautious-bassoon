@@ -1,0 +1,8 @@
+azure-pipelines.yml
+coverage
+.nyc_output
+TEST-RESULTS.xml
+
+.npm
+.config
+*.tgz

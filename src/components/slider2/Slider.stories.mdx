@@ -1,0 +1,30 @@
+import {
+  Meta,
+  Title,
+  Subtitle,
+  Story,
+  Preview,
+  Props,
+  Description,
+} from "@storybook/addon-docs/blocks";
+import * as stories from "./Slider.stories.tsx";
+import { Slider } from "./Slider";
+
+<Meta
+  title="Atoms/Sliders/BrokenControlTab"
+  component={Slider}
+  argTypes={stories.argTypes}
+></Meta>
+
+# Standard Slider
+<Subtitle />
+
+<Description />
+
+<Preview>
+  <Story name="Standard">{(args) => stories.Standard(args)}</Story>
+</Preview>
+
+### Props
+
+<Props story="Standard" />

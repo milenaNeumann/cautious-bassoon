@@ -1,0 +1,150 @@
+{
+  "name": "cautious-bassoon",
+  "version": "0.0.1",
+  "description": "Reproduction of a bug with the Storybook Controls addon",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milenaNeumann/cautious-bassoon.git"
+  },
+  "keywords": [
+    "storybook",
+    "repro"
+  ],
+  "author": "Milena Neumann <milena.neumann@ptvgroup.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "npm run storybook",
+    "build": "run-s compile test:coverage",
+    "compile": "tsc --p ./tsconfig.npm.json ",
+    "test": "jest",
+    "test:all": "npm test -- --watchAll=false",
+    "test:coverage": "jest --coverage --reporters=default --reporters=jest-junit",
+    "lint": "eslint {public,src,test}/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "npm run lint -- --fix",
+    "lint:lockfile": "npx lockfile-lint --path ./package-lock.json --type npm --validate-integrity --validate-https --allowed-hosts ados.ptvag.ptv.de",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public -o build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "nouislider-react": "^3.3.8",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@sambego/storybook-state": "^2.0.1",
+    "@storybook/addon-actions": "^6.0.0-rc.18",
+    "@storybook/addon-controls": "^6.0.0-rc.18",
+    "@storybook/addon-docs": "^6.0.0-rc.18",
+    "@storybook/addon-links": "^6.0.0-rc.18",
+    "@storybook/addons": "^6.0.0-rc.18",
+    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/react": "^6.0.0-rc.18",
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.2.0",
+    "@types/jest": "25.2.3",
+    "@types/node": "14.0.11",
+    "@types/react": "16.9.43",
+    "@types/react-dom": "16.9.8",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "copyfiles": "^2.3.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-mdx": "^1.7.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "eslint-plugin-testing-library": "^3.2.0",
+    "jest": "^26.0.1",
+    "jest-junit": "^10.0.0",
+    "lint-staged": "^10.2.2",
+    "lockfile-lint": "^4.3.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.0.5",
+    "react-scripts": "^3.4.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "ignoreCodes": [
+            1149
+          ]
+        }
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "cobertura"
+    ],
+    "reporters": [
+      "default",
+      "jest-junit"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testEnvironment": "jsdom",
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tests/__mocks__/fileMock.js"
+    },
+    "testPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/e2e/",
+      "<rootDir>/node_modules/"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "outputDirectory": ".",
+    "outputName": "./TEST-RESULTS.xml"
+  },
+  "lint-staged": {
+    "*.{js,jsx,css,json,md,ts,tsx}": [
+      "node_modules/.bin/prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ]
+  }
+}
